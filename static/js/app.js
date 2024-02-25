@@ -29,17 +29,16 @@ d3.json(url).then(function(data) {
         });
 
         // Set the first sample from the list
-        let sample_1 = names[0];
+        let first_sample = names[0];
 
         // Log the value of this sample 
-        console.log(sample_1);
+        console.log(first_sample);
 
         
         // Build plots for initial page
-        buildMetadata(sample_1);
-        buildBarChart(sample_1);
-        buildBubbleChart(sample_1);
-        buildGaugeChart(sample_1);
+        addMdinfo(first_sample);
+        barChart(first_sample);
+        bubbleChart(first_sample);
 
     });
 };
@@ -71,7 +70,7 @@ function addMdinfo(sample) {
 };
 
 // Building bar chart
-function buildBarChart(sample) {
+function barChart(sample) {
     // Retrieve data
     d3.json(url).then((data) => {
        // Retrieve all sample data
@@ -112,7 +111,7 @@ function buildBarChart(sample) {
 };
 
 // Building bubble chart
-function buildBubbleChart(sample) {
+function bubbleChart(sample) {
   // Retrieve all of the data
   d3.json(url).then((data) => {
   // Retrieve sample data
@@ -153,3 +152,18 @@ function buildBubbleChart(sample) {
   Plotly.newPlot("bubble", [trace1], layout)
 });
 };
+
+// Function that updates the dashboard when sample is changed
+function sampleChange(value) { 
+
+  // Log new value
+  console.log(value); 
+
+  // Call all functions 
+  addMdinfo(value);
+  barChart(value);
+  bubbleChart(value);
+};
+
+// Call the initialize function
+init();
