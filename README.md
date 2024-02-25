@@ -1,5 +1,5 @@
 # belly-button-challenge
-Screenshots of the dashboard:
+Screenshots of the Dashboard:
 <p align="center">
   <img src="./Images/Dashboard 1.png" width="70%">
 </p>
